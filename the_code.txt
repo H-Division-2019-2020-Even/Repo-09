@@ -1,0 +1,46 @@
+int buzzer = 5;
+
+
+void setup() {
+
+  pinMode(7 ,INPUT);
+  pinMode(6, INPUT);
+  pinMode(13, OUTPUT);
+  
+
+   Serial.begin(9600);
+
+}
+
+  void loop() {
+
+  int IR2 = digitalRead(6); // 
+  if (IR2 == 0) {
+    Serial.println("Has no obstacle");
+    tone(buzzer, 1500);
+     delay(5000); 
+    tone(buzzer,1500);
+     delay(5000);
+  }
+  else
+  {
+    Serial.println("Obstacle");
+    noTone(buzzer);
+  }
+
+  delay(500);  
+    
+    int IR1 = digitalRead(7);
+    Serial.print(IR1);
+  if(IR1 == 1)
+  {
+    digitalWrite(13, HIGH); 
+    Serial.println("LED is ON");
+  }
+  else
+  { 
+    digitalWrite(13, LOW);
+    Serial.println("LED is OFF");
+  }
+
+}
